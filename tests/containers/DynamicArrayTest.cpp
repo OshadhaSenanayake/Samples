@@ -11,10 +11,24 @@ int main() {
     arr.push_back(54);
     arr.push_back(67);
 
-    std::cout << "Array Size is: " << arr.getSize() << std::endl;
-    std::cout << "Element one: " << arr[0] << std::endl;
+    size_t arraySize = arr.getSize();
 
-    for(size_t i = 0; i < arr.getSize(); i++) {
-        std::cout << arr[i] << std::endl;
+    std::cout << "Array Size is: " << arraySize << std::endl;
+    std::cout << "Element one: " << arr[0] << std::endl;
+    std::cout << "Array Capacity: " << arr.getCapacity() << std::endl;
+
+    std::cout << "Initial array: ";
+    for(size_t i = 0; i < arraySize; i++) {
+        std::cout << arr[i] << " ";
     }
+    std::cout << std::endl;
+    
+    arr.pop_back();
+    std::cout << "Array after poping element: ";
+    for(size_t i = 0; i < arraySize; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Trying to access poped element: " << arr[arraySize] << std::endl; // Expected result: Memory out of bound error
 }
