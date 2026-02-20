@@ -59,6 +59,11 @@ size_t DynamicArray<T>::getSize() const {
 }
 
 template<typename T>
+size_t DynamicArray<T>::getCapacity() const {
+    return _capacity;
+}
+
+template<typename T>
 void DynamicArray<T>::pop_back() {
     if(_currentSize == 0) {
         throw std::out_of_range("Memory out of bound");
