@@ -28,18 +28,18 @@ DynamicArray<T>::~DynamicArray() {
 
 template<typename T>
 T& DynamicArray<T>::operator [](size_t index) {
-    if(_currentSize == _capacity) {
-        // Resize logic here
-        resize(_currentSize*2);
+    // Element accessibility is guarded by the _currentSize
+    if(index >= _currentSize) {
+        throw std::out_of_range("Memory out of bound");
     }
     return array[index];
 }
 
 template<typename T>
 const T& DynamicArray<T>::operator [](size_t index) const {
-    if(_currentSize == _capacity) {
-        // Resize logic here
-        resize(_currentSize*2);
+    // Element accessibility is guarded by the _currentSize
+    if(index >= _currentSize) {
+        throw std::out_of_range("Memory out of bound");
     }
     return array[index];
 }
@@ -56,4 +56,15 @@ void DynamicArray<T>::push_back(T&& element) {
 template<typename T>
 size_t DynamicArray<T>::getSize() const {
     return _currentSize;
+}
+
+template<typename T>
+void DynamicArray<T>::pop_back() {
+    if(_currentSize == 0) {
+        throw std::out_of_range("Memory out of bound");
+    }
+
+    // Conceptually, we reduce the size of the array
+    // That element remains there, but not accessible(As accessibility is guarded by _currentSize in operator []) 
+    --_currentSize;
 }
