@@ -14,7 +14,10 @@ Node<T>* SinglyLinkedList<T>::getHead() const {
 template<typename T>
 void SinglyLinkedList<T>::insertFront(Node<T>* newNode) {
     if(_head != nullptr){
+        // Set current head as the new node's nextNode pointer
         newNode->setNextNode(_head);
+
+        // reset the head as the new node
         _head = newNode;
     }
 }
@@ -22,9 +25,13 @@ void SinglyLinkedList<T>::insertFront(Node<T>* newNode) {
 template<typename T>
 void SinglyLinkedList<T>::insertBack(Node<T>* newNode) {
     Node<T>* currentLastNode = _head;
+
+    // Search for the last node of the list
     while(currentLastNode -> getNextNode() != nullptr) {
         currentLastNode = currentLastNode -> getNextNode();
     }
+
+    // Update and set the nextNode pointer to new node
     currentLastNode -> setNextNode(newNode);
 }
 
