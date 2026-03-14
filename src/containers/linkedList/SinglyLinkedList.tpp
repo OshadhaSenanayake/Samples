@@ -21,15 +21,11 @@ void SinglyLinkedList<T>::insertFront(Node<T>* newNode) {
 
 template<typename T>
 void SinglyLinkedList<T>::insertBack(Node<T>* newNode) {
-    if(_head->getNextNode() == nullptr) {
-        _head->setNextNode(newNode);
-    } else {
-        Node<T>* currentLastNode = _head;
-        while(currentLastNode -> getNextNode() != nullptr) {
-            currentLastNode = currentLastNode -> getNextNode();
-        }
-        currentLastNode -> setNextNode(newNode);
+    Node<T>* currentLastNode = _head;
+    while(currentLastNode -> getNextNode() != nullptr) {
+        currentLastNode = currentLastNode -> getNextNode();
     }
+    currentLastNode -> setNextNode(newNode);
 }
 
 template<typename T>
